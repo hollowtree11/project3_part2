@@ -80,7 +80,7 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "server_executable::@20a40c4b36ca103854cb",
-					"jsonFile" : "target-server_executable-Debug-7fc7aeb8c1a25c94d73c.json",
+					"jsonFile" : "target-server_executable-Debug-d7af1864b6d398c4d026.json",
 					"name" : "server_executable",
 					"projectIndex" : 0
 				}
@@ -90,7 +90,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace",
+		"build" : "/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug",
 		"source" : "/Users/gerardocastillo/CLionProjects/EncryptedChat"
 	},
 	"version" : 

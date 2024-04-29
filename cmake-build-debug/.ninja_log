@@ -6,5 +6,8 @@
 484	527	1711981578139712636	Server/server_executable	c71288b197a3f4c2
 4	274	1711893193821168161	Client/CMakeFiles/client_executable.dir/Client.cpp.o	d3a913eff07139fb
 888	2623	1711981246368801616	Client/client_executable	6e42f66595014132
-0	53	1711981677794425547	build.ninja	d6c726fbd53f962d
+0	53	1714411843454046621	build.ninja	d6c726fbd53f962d
 3	335	1711894054546235216	Client/CMakeFiles/client_executable.dir/client.cpp.o	77ed184dd425777b
+9	319	1714411846559841372	Server/CMakeFiles/server_executable.dir/main.cpp.o	5de161ffcb71c0ab
+9	319	1714411846560635205	Server/CMakeFiles/server_executable.dir/server.cpp.o	2d24a0e03cb8c62f
+319	358	1714411846603064358	Server/server_executable	c71288b197a3f4c2
