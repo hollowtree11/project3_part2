@@ -1,8 +1,19 @@
 # Client-Server Chat Application with AES-CBC Encryption
 
+## Table of Contents
+- [Introduction](#introduction)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+- [Geting Started](#getting-started)
+- [Usage](#usage)
+- [Security Considerations](#security-considerations)
+- [Screenshots](#screenshots)
+
+## Introduction
+
 This project implements a client-server chat application where messages exchanged between clients and the server are encrypted using AES-CBC mode encryption. AES (Advanced Encryption Standard) is a symmetric encryption algorithm widely used for secure communication. CBC (Cipher Block Chaining) mode adds an additional layer of security by XORing each plaintext block with the previous ciphertext block before encryption.
 
-## Features
+### Features
 
 - **Client-Server Architecture**: The application follows a client-server architecture where multiple clients can connect to a central server to exchange messages securely.
   
@@ -10,7 +21,7 @@ This project implements a client-server chat application where messages exchange
 
 - **Interactive Chat Interface**: Clients can send and receive messages in real-time through an interactive command-line interface.
 
-## Technologies Used
+### Technologies Used
 
 - **C++ Programming Language**: The application is developed primarily using C++ to implement the client and server functionalities.
 
@@ -43,3 +54,13 @@ Be sure to have OpenSSL library installed
 - **Secure Communication**: AES-CBC encryption provides end-to-end encryption, ensuring that messages exchanged between clients are secure and protected from unauthorized access.
 
 - **Error Handling**: Robust error handling mechanisms are implemented to handle exceptions, prevent data leaks, and maintain the confidentiality of encrypted messages.
+
+## Screenshots
+
+Server
+
+![Server](images/Server.png "Server")
+
+Client
+
+![Client](images/Client.png "Client")
