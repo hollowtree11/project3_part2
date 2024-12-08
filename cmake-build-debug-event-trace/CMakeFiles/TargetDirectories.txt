@@ -1,8 +1,0 @@
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/CMakeFiles/rebuild_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Client/CMakeFiles/client_executable.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Client/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Client/CMakeFiles/rebuild_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Server/CMakeFiles/server_executable.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Server/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug-event-trace/Server/CMakeFiles/rebuild_cache.dir

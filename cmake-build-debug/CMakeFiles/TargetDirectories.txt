@@ -1,8 +1,0 @@
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Client/CMakeFiles/client_executable.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Client/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Client/CMakeFiles/rebuild_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Server/CMakeFiles/server_executable.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Server/CMakeFiles/edit_cache.dir
-/Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug/Server/CMakeFiles/rebuild_cache.dir
