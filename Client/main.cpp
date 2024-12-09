@@ -26,18 +26,20 @@ int main() {
     int codes;
     int secret_size;
 
-    // TODO: Call DH_get_2048_256() to generate DH parameters
-    // You should use that method, so the server and client will use the same p and g
-    // and store it in privkey. Then call handleErrors()
-    
-    
-    // TODO: Write a method to generate the public and private key pair
-    
-    
+    privkey = DH_get_2048_256();
+    if (privkey == NULL){
+        handleErrors();
+    }
+
+
+    if (DH_generate_key(privkey) != 1){
+        handleErrors();
+    }
+
+
     const BIGNUM *pubkey = NULL;
-    // TODO: Write a method to extract the public key from privkey and store it in pubkey
-    // HINT: DH_get0_pub_key()
-    
+
+    DH_get0_key(privkey, &pubkey, NULL);
 
     if (pubkey == NULL) {
         printf("Error: DH public key is NULL\n");
@@ -70,9 +72,9 @@ int main() {
     // Encrypt the public key
     encryptWithPSK(pubkey_bin, pubkey_len, (unsigned char*)pre_shared.c_str(), ciphertext, iv, ciphertext_len);
 
-    // TODO: send the iv to the server
-    
-    // TODO: send the ciphertext to the server
+    int ivSent = send(clientSocket, iv, EVP_MAX_IV_LENGTH, 0);
+
+    int ciphertextSent = send(clientSocket, ciphertext, ciphertext_len, 0);
     
 
     std::cout << "Encrypted public key sent to server." << std::endl;
@@ -82,11 +84,11 @@ int main() {
     unsigned char IV[EVP_MAX_IV_LENGTH];
     int bytesRead;
 
-    // TODO: receive the IV from the server
+    int ivReceivedBytes = recv(clientSocket, IV, EVP_MAX_IV_LENGTH, 0);
     
     
     unsigned char encryptedBuffer[BUFFER_SIZE];
-    // TODO: receive the encrypted message from the server and store it in bytesRead
+    bytesRead = recv(clientSocket, encryptedBuffer, BUFFER_SIZE, 0);
     
     unsigned char decryptedBuffer[BUFFER_SIZE];
     int decryptedLen;
@@ -104,8 +106,7 @@ int main() {
     BIGNUM *serverPubKey = BN_bin2bn(decryptedBuffer, decryptedLen, NULL);
     unsigned char *sharedSecret = (unsigned char *)OPENSSL_malloc(DH_size(privkey));
 
-    // TODO: compute the shared secret and store it in secret_size
-    // HINT: using DH_compute_key()
+    secret_size = DH_compute_key(sharedSecret, serverPubKey, privkey);
     
 
     std::cout << "Shared Secret (Hex): ";
