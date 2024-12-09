@@ -1,7 +1,9 @@
+
 #include "server.h"
 #include <iomanip>
 #include <openssl/dh.h>
 #include <openssl/rand.h>
+#include <cstring>
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 // Handles client communication
@@ -11,11 +13,11 @@ void handleClient(int clientSocket) {
     unsigned char iv[EVP_MAX_IV_LENGTH];
     int bytesRead;
 
-    // TODO: read the iv from the client
+    int ivReceivedBytes = recv(clientSocket, iv, EVP_MAX_IV_LENGTH, 0);
     
 
     unsigned char encryptedBuffer[BUFFER_SIZE];
-    // TODO: read the encrypted message from the client and store it in bytesRead
+    bytesRead = recv(clientSocket, encryptedBuffer, BUFFER_SIZE, 0);
    
 
     unsigned char decryptedBuffer[BUFFER_SIZE];
@@ -33,17 +35,20 @@ void handleClient(int clientSocket) {
     int codes;
     int secret_size;
 
-    // TODO: Call DH_get_2048_256() to generate DH parameters
-    // You should use that method, so the server and client will use the same p and g
-    // and store it in privkey. Then call handleErrors()
-    
+    privkey = DH_get_2048_256();
+    if (privkey == NULL){
+        handleErrors();
+    }
 
-    // TODO: Write a method to generate the public and private key pair
+
+    if (DH_generate_key(privkey) != 1){
+        handleErrors();
+    }
     
     
     const BIGNUM *pubkey = NULL;
-    // TODO: Write a method to extract the public key from privkey and store it in pubkey
-    // HINT: DH_get0_pub_key()
+
+    DH_get0_key(privkey, &pubkey, NULL);
     
 
     if (pubkey == NULL) {
@@ -77,10 +82,10 @@ void handleClient(int clientSocket) {
     }
 
     encryptWithPSK(pubkey_bin, pubkey_len, (unsigned char*)pre_shared.c_str(), ciphertext, IV, ciphertext_len);
-    
-    // TODO: send the iv to the client
-    
-    // TODO: send the ciphertext to the client
+
+    int ivSent = send(clientSocket, IV, EVP_MAX_IV_LENGTH, 0);
+
+    int ciphertextSent = send(clientSocket, ciphertext, ciphertext_len, 0);
     
     
     std::cout << "Encrypted public key sent to client." << std::endl;
@@ -89,8 +94,7 @@ void handleClient(int clientSocket) {
     BIGNUM *clientPubKey = BN_bin2bn(decryptedBuffer, decryptedLen, NULL);
     unsigned char *sharedSecret = (unsigned char *)OPENSSL_malloc(DH_size(privkey));
 
-    // TODO: compute the shared secret and store it in secret_size
-    // HINT: using DH_compute_key()
+    secret_size = DH_compute_key(sharedSecret, clientPubKey, privkey);
     
 
     std::cout << "Shared Secret (Hex): ";
