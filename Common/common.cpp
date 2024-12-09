@@ -1,3 +1,4 @@
+
 #include "common.h"
 #include <iostream>
 #include <cstring>
@@ -68,17 +69,25 @@ void encryptWithPSK(const unsigned char* publicKey, int publicKeyLen,
     EVP_CIPHER_CTX* ctx;
     int len;
 
-    // Create and initialize the context. Then call the handleErrors() method
-    
+    if (!(ctx = EVP_CIPHER_CTX_new())) {
+        handleErrors();
+    }
 
-    // Initialize encryption operation. Then call the handleErrors() method
-    
 
-    // Encrypt the public key. Then call the handleErrors() method
+    if (1 != EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, psk, iv)) {
+        handleErrors();
+    }
+
+
+    if (1 != EVP_EncryptUpdate(ctx, ciphertext, &len, publicKey, publicKeyLen)) {
+        handleErrors();
+    }
     
     ciphertextLen = len;
 
-    // Finalize encryption. Then call the handleErrors() method
+    if (1 != EVP_EncryptFinal_ex(ctx, ciphertext + len, &len)) {
+        handleErrors();
+    }
    
     ciphertextLen += len;
 
@@ -91,17 +100,25 @@ void decryptWithPSK(const unsigned char* ciphertext, int ciphertextLen,
     EVP_CIPHER_CTX* ctx;
     int len;
 
-    // Initialize decryption context. Then call the handleErrors() method
-    
+    if (!(ctx = EVP_CIPHER_CTX_new())) {
+        handleErrors();
+    }
 
-    // Initialize decryption operation. Then call the handleErrors() method
-    
 
-    // Decrypt the ciphertext. Then call the handleErrors() method
-    
+    if (1 != EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, psk, iv)) {
+        handleErrors();
+    }
+
+
+    if (1 != EVP_DecryptUpdate(ctx, decryptedText, &len, ciphertext, ciphertextLen)) {
+        handleErrors();
+    }
+
     decryptedLen = len;
 
-    // Finalize decryption. Then call the handleErrors() method
+    if (1 != EVP_DecryptFinal_ex(ctx, decryptedText + len, &len)) {
+        handleErrors();
+    }
     
     decryptedLen += len;
 
